@@ -14,6 +14,8 @@ class CardRecommended extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Image.network(
           moviePoster,
+          height: 300,
+          width: 150,
           fit: BoxFit.cover,
         ),
       ),

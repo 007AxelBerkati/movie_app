@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movie_app/home_screen.dart';
 import 'package:movie_app/splash_screen.dart';
 import 'package:movie_app/utils/hexcolor.dart';
 

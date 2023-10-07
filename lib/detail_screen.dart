@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/components/card_detail_movie.dart';
 import 'package:movie_app/model/movie.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -7,39 +8,62 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(children: <Widget>[
-        Stack(
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.network(movie.backdropPath, height: 300, fit: BoxFit.fill),
-            SafeArea(
-                child: Padding(
+            Stack(
+              children: <Widget>[
+                Image.network(movie.backdropPath,
+                    height: height * 0.4, fit: BoxFit.fill),
+                SafeArea(
+                    child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back),
+                        color: Colors.white,
+                      )),
+                )),
+                Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(Icons.arrow_back),
-                              color: Colors.white,
-                            )),
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.favorite_border),
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    )))
-          ],
-        )
-      ]),
+                    child: CardDetailMovie(
+                      movie: movie,
+                    ))
+              ],
+            ),
+            Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Synopsis',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      movie.overview,
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          height: 1.5,
+                          wordSpacing: 2),
+                    )
+                  ],
+                ))
+          ]),
     );
   }
 }

@@ -3,36 +3,46 @@ import 'package:movie_app/components/card_latest_upload.dart';
 import 'package:movie_app/components/card_recommended.dart';
 import 'package:movie_app/detail_screen.dart';
 import 'package:movie_app/model/movie.dart';
+import 'package:movie_app/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var sortLatestUpload = [...movieList]
+      ..sort((a, b) => b.releaseDate.compareTo(a.releaseDate));
     return Scaffold(
         body: SafeArea(
             child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.only(left: 16, bottom: 16, right: 16),
       child: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(
               height: 16,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Movie App',
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Icon(
-                  Icons.search,
-                  color: Colors.white,
-                )
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SearchScreen()));
+                    },
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ))
               ],
             ),
             const SizedBox(
@@ -48,10 +58,6 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Text(
-                  'See All',
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
-                )
               ],
             ),
             const SizedBox(
@@ -63,17 +69,18 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 5,
                 itemBuilder: (context, index) {
-                  final Movie movie = movieList[index];
+                  var sortRecommended = [...movieList]
+                    ..sort((a, b) => b.voteAverage.compareTo(a.voteAverage));
                   return InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    DetailScreen(movie: movie)));
+                                builder: (context) => DetailScreen(
+                                    movie: sortRecommended[index])));
                       },
                       child: CardRecommended(
-                        moviePoster: movie.posterPath,
+                        moviePoster: sortRecommended[index].posterPath,
                       ));
                 },
               ),
@@ -91,17 +98,10 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Text(
-                  'See All',
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
-                )
               ],
             ),
-            const SizedBox(
-              height: 16,
-            ),
             Column(
-              children: movieList.map((movie) {
+              children: sortLatestUpload.map((movie) {
                 return InkWell(
                     onTap: () {
                       Navigator.push(
