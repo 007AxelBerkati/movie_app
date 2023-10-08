@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_app/home_screen.dart';
+import 'package:movie_app/splash_screen.dart';
 import 'package:movie_app/utils/hexcolor.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Nunito',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
               .copyWith(background: HexColor('#210F37'))),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
