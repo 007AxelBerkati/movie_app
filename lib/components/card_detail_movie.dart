@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/model/movie.dart';
@@ -10,7 +11,6 @@ class CardDetailMovie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return Card(
@@ -27,7 +27,7 @@ class CardDetailMovie extends StatelessWidget {
                 child: ClipRRect(
                   child: Image.network(
                     movie.posterPath,
-                    height: 200,
+                    height: kIsWeb ? height * 0.3 : height * 0.2,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -81,9 +81,7 @@ class CardDetailMovie extends StatelessWidget {
                             color: Colors.amber,
                           ),
                           itemSize: 20,
-                          onRatingUpdate: (rating) {
-                            print(rating);
-                          },
+                          onRatingUpdate: (rating) {},
                           tapOnlyMode: false,
                           ignoreGestures: true,
                         )

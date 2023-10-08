@@ -31,7 +31,8 @@ var movieList = [
         "The continuation of the adventures of the Minions, always in search of a tyrannical leader.",
     posterPath:
         "https://m.media-amazon.com/images/M/MV5BNDM3YWEwYTMtNmY3ZS00YzJiLWFlNWItOWFmNjY0YzA4ZDE3XkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg",
-    backdropPath: "https://images8.alphacoders.com/126/1261148.jpg",
+    backdropPath:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgkh4JHSY4h4DwmBM0MsItt-tlPOKVp6KrqQ&usqp=CAU",
     releaseDate: "2022-06-15",
     voteAverage: 8.1,
     tagline: 'The Rise of Gru',
@@ -44,7 +45,7 @@ var movieList = [
     overview:
         "Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera. But all the fun is threatened by a deeply-held secret: they are sea monsters from another world just below the water’s surface.",
     posterPath:
-        "https://www.themoviedb.org/t/p/original/5WYwPZgaLJMMgzXAdYnpjt1z4nm.jpg",
+        "https://myhotposters.com/cdn/shop/products/mL5374_1024x1024.jpg?v=1623612759",
     backdropPath:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCJg1jkuLXA2uP2ig6YH9cc9Q6mUDLPtFBvg&usqp=CAU",
     releaseDate: "2021-06-17",
