@@ -101,10 +101,12 @@ class _SearchScreenState extends State<SearchScreen> {
                                 BorderRadius.all(Radius.circular(10)))),
                   ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child:
-                        _buildSearchResults()), // Widget untuk menampilkan hasil pencarian
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: _buildSearchResults()),
+                )
+                // Widget untuk menampilkan hasil pencarian
                 // Widget untuk menampilkan hasil pencarian
               ],
             ),
