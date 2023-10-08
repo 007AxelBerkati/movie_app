@@ -103,16 +103,20 @@ class DetailMobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Column(
+        body: SingleChildScrollView(
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Stack(
               children: <Widget>[
                 Image.network(movie.backdropPath,
-                    height: height * 0.4, fit: BoxFit.fill),
+                    width: screenWidth,
+                    height: screenHeight * 0.4,
+                    fit: BoxFit.fill),
                 SafeArea(
                     child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -160,6 +164,6 @@ class DetailMobilePage extends StatelessWidget {
                   ],
                 ))
           ]),
-    );
+    ));
   }
 }

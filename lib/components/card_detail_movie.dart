@@ -27,7 +27,11 @@ class CardDetailMovie extends StatelessWidget {
                 child: ClipRRect(
                   child: Image.network(
                     movie.posterPath,
-                    height: kIsWeb ? height * 0.3 : height * 0.2,
+                    height: kIsWeb
+                        ? height * 0.3
+                        : height < 600
+                            ? height * 0.4
+                            : height * 0.25,
                     fit: BoxFit.fill,
                   ),
                 ),
